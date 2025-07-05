@@ -1,16 +1,13 @@
 from pathlib import Path
 import environ
-import os
 
 env = environ.Env()
-environ.Env.read_env()  # load .env
+environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = env('SECRET_KEY', default='unsafe-secret-key')
-
 DEBUG = env.bool('DEBUG', default=True)
-
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -27,7 +24,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # must be first
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,5 +48,4 @@ DATABASES = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
-
 STATIC_URL = 'static/'
